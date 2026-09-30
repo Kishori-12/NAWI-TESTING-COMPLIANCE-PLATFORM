@@ -1,0 +1,310 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>WeighCert – NAWI Testing & Compliance Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f3efe6;--cd:#fffdf8;--tx:#16212b;--mu:#66727d;--bd:#e3dccd;--ac:#0d5c63;--am:#d98324;--ok:#0f7b3f;--okb:#dcf3e4;--no:#b3261e;--nob:#fde3df;--wa:#8a5a00;--wab:#fdeecb;--sh:0 1px 2px rgba(22,33,43,.06),0 8px 24px -12px rgba(22,33,43,.18)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1114;--cd:#121c21;--tx:#e8eff3;--mu:#8fa1ad;--bd:#233039;--ac:#4fd1c5;--am:#f2a65a;--ok:#5fd68f;--okb:#12321f;--no:#ff8a80;--nob:#3b1a18;--wa:#f0c060;--wab:#3a2d10;--sh:0 8px 24px -12px #000}}
+:root[data-theme="dark"]{--bg:#0a1114;--cd:#121c21;--tx:#e8eff3;--mu:#8fa1ad;--bd:#233039;--ac:#4fd1c5;--am:#f2a65a;--ok:#5fd68f;--okb:#12321f;--no:#ff8a80;--nob:#3b1a18;--wa:#f0c060;--wab:#3a2d10;--sh:0 8px 24px -12px #000}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;background-image:radial-gradient(var(--bd) 1px,transparent 1px);background-size:22px 22px}
+header{background:#0c2429;color:#e8f3f3;padding:12px 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;box-shadow:0 4px 20px -8px #000a}
+.logo{display:flex;gap:10px;align-items:center;font:600 21px Fraunces,Georgia,serif;letter-spacing:.2px}.logo svg{flex:none}.logo small{display:block;font:400 11px "IBM Plex Sans",sans-serif;color:#8fb5b8;letter-spacing:.4px}
+nav{display:flex;gap:2px;flex-wrap:wrap;background:#ffffff12;padding:4px;border-radius:999px}nav button{background:none;border:0;padding:7px 14px;border-radius:999px;color:#b9d3d5;cursor:pointer;font:500 13.5px inherit;font-family:inherit;transition:.2s}nav button:hover{color:#fff}nav button.on{background:var(--am);color:#1b1206}
+header .mu{color:#8fb5b8}header select{background:#ffffff14;color:#fff;border-color:#ffffff30;border-radius:999px}header option{color:#000}
+main{max-width:1080px;margin:0 auto;padding:22px 16px 40px}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:var(--sh);animation:up .45s both}@keyframes up{from{opacity:0;transform:translateY(10px)}}
+h2{margin:0 0 12px;font:600 23px Fraunces,Georgia,serif;letter-spacing:-.2px}h3{margin:18px 0 8px;font:600 12px "IBM Plex Sans";letter-spacing:.9px;text-transform:uppercase;color:var(--ac)}.mu{color:var(--mu);font-size:13px}
+input,select,textarea{font:inherit;padding:8px 10px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);width:100%;transition:.15s}input:focus,select:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 25%,transparent)}
+label{font-size:12.5px;color:var(--mu);font-weight:500}
+button.b{background:var(--ac);color:#fff;border:0;padding:9px 18px;border-radius:999px;cursor:pointer;font:500 14px inherit;font-family:inherit;transition:.15s;box-shadow:0 2px 0 #0003}button.b:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.1)}button.b.s{background:transparent;color:var(--tx);border:1px solid var(--bd);box-shadow:none}button.b:disabled{opacity:.4;cursor:not-allowed}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}th,td{border-bottom:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}th{color:var(--mu);font:600 11px "IBM Plex Sans";letter-spacing:.7px;text-transform:uppercase}td{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px}td:nth-child(2),td:first-child{font-family:inherit}tr:hover td{background:color-mix(in srgb,var(--ac) 6%,transparent)}td input{min-width:84px;font-family:"IBM Plex Mono",monospace}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:99px;font:600 11.5px "IBM Plex Sans";letter-spacing:.4px}.tag:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}.P{background:var(--okb);color:var(--ok)}.F{background:var(--nob);color:var(--no)}.W{background:var(--wab);color:var(--wa)}
+.stat{font:500 34px "IBM Plex Mono",monospace;line-height:1.1}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}code{font:12px "IBM Plex Mono",monospace;word-break:break-all;background:var(--bg);padding:6px 8px;border-radius:8px;display:block}
+.sc{border-top:3px solid var(--ac)}.sc:nth-child(2){border-color:var(--am)}.sc:nth-child(3){border-color:var(--wa)}.sc:nth-child(4){border-color:var(--ok)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;counter-reset:s}.flow span{counter-increment:s;background:var(--bg);border:1px solid var(--bd);padding:5px 12px 5px 6px;border-radius:99px;font-size:12.5px;display:flex;gap:7px;align-items:center}.flow span:before{content:counter(s);background:var(--ac);color:#fff;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:600 11px "IBM Plex Mono"}
+.hero{position:relative;overflow:hidden;border-radius:22px;padding:34px;margin-bottom:16px;color:#e8f3f3;background:linear-gradient(135deg,#0c2429,#0d5c63 70%,#127a7a);box-shadow:var(--sh);display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:center;animation:up .5s both}
+.hero:before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,#ffffff0d 0 1px,transparent 1px 28px),repeating-linear-gradient(0deg,#ffffff0d 0 1px,transparent 1px 28px);pointer-events:none}
+.hero>*{position:relative}.hero h1{font:600 clamp(28px,4.4vw,44px)/1.1 Fraunces,Georgia,serif;margin:6px 0 12px;letter-spacing:-.6px}.hero h1 em{color:#f2a65a;font-style:italic}.hero p{color:#b9d3d5;max-width:46ch;margin:0 0 18px}.eyebrow{font:600 11px "IBM Plex Sans";letter-spacing:1.4px;text-transform:uppercase;color:#f2a65a}
+.hero button.b{background:#f2a65a;color:#1b1206}.hero button.b.s{background:transparent;color:#fff;border-color:#ffffff50}
+.dial{width:100%;max-width:300px;justify-self:center}.needle{transform-origin:110px 110px;animation:sw 3.2s ease-in-out infinite alternate}@keyframes sw{from{transform:rotate(-16deg)}to{transform:rotate(11deg)}}
+.bar{height:5px;border-radius:9px;background:var(--bd);margin-top:5px;min-width:60px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ok);border-radius:9px}.bar i.x{background:var(--no)}
+.vC{border-left:6px solid var(--ok)}.vN{border-left:6px solid var(--no)}.vI{border-left:6px solid var(--wa)}
+@media(max-width:720px){.hero{grid-template-columns:1fr;padding:24px}}
+@media print{header,.np,.hero{display:none!important}body{background:#fff;color:#000}.card{border:0;box-shadow:none}}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e9edf1;--cd:#fff;--tx:#101820;--mu:#57656f;--bd:#d3dbe2;--ac:#1f4fd8;--acb:#e6ecff}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1218;--cd:#151c24;--tx:#e8eef3;--mu:#8fa0ad;--bd:#26313b;--ac:#7ea2ff;--acb:#1b2a4d}}
+:root[data-theme="dark"]{--bg:#0d1218;--cd:#151c24;--tx:#e8eef3;--mu:#8fa0ad;--bd:#26313b;--ac:#7ea2ff;--acb:#1b2a4d}
+body{font-family:"Public Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums}
+h1,h2,h3,.logo,.stat{font-family:"Familjen Grotesk","Public Sans",sans-serif;letter-spacing:-.01em}
+h2{font-size:22px;font-weight:600}h3{font-size:16px;font-weight:600}
+header{padding:12px 20px;margin-bottom:8px;border-bottom:0}
+header:after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:8px;background:repeating-linear-gradient(90deg,var(--mu) 0 1px,transparent 1px 40px) 0 0/100% 8px no-repeat,repeating-linear-gradient(90deg,var(--bd) 0 1px,transparent 1px 8px) 0 0/100% 4px no-repeat}
+.logo{display:flex;gap:10px;align-items:center;color:var(--tx);font-size:20px;font-weight:700;line-height:1.1}.logo svg{color:var(--ac)}.logo small{font-family:"Public Sans",sans-serif;letter-spacing:0;margin-top:2px}
+nav button{font-weight:500;border-radius:0;border-bottom:2px solid transparent;padding:8px 11px}nav button:hover{color:var(--tx)}nav button.on{background:none;color:var(--tx);border-bottom-color:var(--ac)}
+main{padding-top:22px}.card{border-radius:10px;padding:20px}
+.hero{position:relative;background:#101820;color:#fff;border-radius:6px;padding:34px 30px 56px;margin-bottom:16px;overflow:hidden}
+.hero h1{margin:0 0 10px;font-size:clamp(28px,5vw,44px);line-height:1.08;font-weight:700;max-width:16em}
+.hero p{margin:0;max-width:34em;color:#b9c6d1;font-size:16px}
+.hero:before{content:"";position:absolute;left:0;right:0;bottom:0;height:26px;background:repeating-linear-gradient(90deg,#fff 0 1px,transparent 1px 50px) 0 100%/100% 22px no-repeat,repeating-linear-gradient(90deg,#8ea1b1 0 1px,transparent 1px 10px) 0 100%/100% 12px no-repeat}
+.hero i{position:absolute;bottom:0;left:64%;width:2px;height:40px;background:#6f93ff;animation:sw 1.4s cubic-bezier(.2,.8,.2,1) both}.hero i:before{content:"";position:absolute;top:-6px;left:-5px;border:6px solid transparent;border-top-color:#6f93ff;border-bottom:0}
+@keyframes sw{from{left:6%}}
+button.b{background:var(--ac);color:#fff;font-weight:600;border-radius:8px;padding:9px 16px;transition:transform .12s}button.b:active{transform:translateY(1px)}
+:root[data-theme="dark"] button.b,:root:not([data-theme="light"]) button.b{color:#0d1218}
+button.b.s{background:transparent;color:var(--tx);border:1px solid var(--bd)}button.b.s:hover:not(:disabled){border-color:var(--ac)}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+input,select{background:var(--cd)}input:focus,select:focus{border-color:var(--ac)}
+th{font-size:12.5px;font-weight:600;background:var(--bg);white-space:nowrap}tr:hover td{background:var(--acb)}
+.tag{display:inline-flex;align-items:center;gap:6px}.tag:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.g>.card{border-left:4px solid var(--ac);margin:0}.stat{font-size:34px;line-height:1.1}
+.flow{counter-reset:s;gap:8px;font-size:0}.flow span{counter-increment:s;font-size:13px;background:var(--bg);color:var(--tx);border:1px solid var(--bd);padding:4px 11px 4px 6px}.flow span:before{content:counter(s);display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;border-radius:50%;background:var(--ac);color:#fff;font-size:11px;font-weight:600;margin-right:7px}
+.meter{height:6px;background:var(--bd);border-radius:9px;overflow:hidden;margin:2px 0 6px}.meter i{display:block;height:100%;background:var(--ok);transition:width .3s}
+footer{max-width:1050px;margin:0 auto;padding:6px 16px 28px;color:var(--mu);font-size:12.5px}
+@media(max-width:640px){nav{overflow-x:auto;flex-wrap:nowrap;width:100%}.hero{padding:26px 20px 52px}}
+@media(prefers-reduced-motion:reduce){.hero i{animation:none}}
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script></head><body>
+<header><div class="logo"><svg width="34" height="34" viewBox="0 0 34 34"><rect width="34" height="34" rx="9" fill="#f2a65a"/><path d="M17 7v18M9 25h16M9 12h16" stroke="#1b1206" stroke-width="2.2" stroke-linecap="round"/><path d="M9 12l-3.5 7a3.5 2.2 0 007 0zM25 12l-3.5 7a3.5 2.2 0 007 0z" fill="#1b1206"/></svg><div>WeighCert<small>Standards-driven NAWI testing &amp; compliance</small></div></div>
+<nav id="nav"></nav>
+<div class="row"><span class="mu">Role</span><select id="role" style="width:auto"><option>Technician</option><option>Reviewer</option><option>Administrator</option></select></div></header>
+<main id="app"></main><footer>WeighCert · rule set versioned in code · supports authorized testing, does not certify instruments.</footer>
+<script>
+const $=s=>document.querySelector(s);
+let db=null;try{db=JSON.parse(localStorage.getItem('wc4')||'null')}catch(e){}
+db=db||{inst:[],tests:{},audit:[],reports:[]};
+let role='Technician',view='dash',cur=null,lastRep=null;
+const save=()=>{try{localStorage.setItem('wc4',JSON.stringify(db))}catch(e){}};
+const log=a=>{db.audit.unshift({t:new Date().toLocaleString(),u:role,a});save()};
+// ---- Versioned rule set (configurable, not hard-coded in the UI) ----
+const RULES={version:'OIML R 76-1 rule-set v1.0',
+ bands:{I:[50000,200000],II:[5000,20000],III:[500,2000],IIII:[50,200]},   // MPE band limits in multiples of e
+ mult:[0.5,1,1.5],                                                        // MPE in e for each band (initial verification)
+ n:{I:[50000,1e12],II:[100,100000],III:[100,10000],IIII:[100,1000]},      // allowed n = Max/e
+ minE:{I:100,II:50,III:20,IIII:10}};                                       // Min >= k*e (configurable)
+const mpe=(c,e,L)=>{const m=L/e,b=RULES.bands[c],k=RULES.mult;return e*(m<=b[0]?k[0]:m<=b[1]?k[1]:k[2])};
+const band=(c,e,L)=>{const m=L/e,b=RULES.bands[c];return m<=b[0]?`0–${b[0]}e`:m<=b[1]?`${b[0]}e–${b[1]}e`:`>${b[1]}e`};
+const rnd=(L,e)=>+(Math.round(L/e)*e).toFixed(6);
+const num=v=>(v===''||v==null||isNaN(+v))?null:+v;
+const r4=x=>+(+x).toFixed(4);
+function plan(i){const{cls,max,min,e}=i,b=RULES.bands[cls];
+ const w=[...new Set([min,b[0]*e,b[1]*e,rnd(max/2,e),max].filter(x=>x>=min&&x<=max))].sort((a,b)=>a-b);
+ return{w,ecc:rnd(max/3,e),rep:[rnd(max/2,e),max]}}
+const blank=i=>{const p=plan(i);return{status:'Draft',review:'',obs:{w:p.w.map(()=>['','']),ecc:['','','','',''],rep:p.rep.map(()=>['','',''])}}};
+function evaluate(i,t){const p=plan(i),o=t.obs,rows=[],warn=[],{cls,e,max,min,unit}=i;
+ const add=(test,item,obs,ref,lim,rule,kind)=>{const d=kind==='spread'?obs:obs-ref;const pass=Math.abs(d)<=lim+1e-9;
+  rows.push({test,item,obs:r4(obs),ref:r4(ref),d:r4(d),lim:r4(lim),rule,pass,why:`${kind==='spread'?'Spread':'Error'} ${r4(d)} ${pass?'≤':'>'} limit ±${r4(lim)} ${unit}`})};
+ const n=max/e,[n0,n1]=RULES.n[cls];
+ rows.push({test:'Instrument',item:'Number of divisions n',obs:r4(n),ref:`${n0}–${n1>1e9?'∞':n1}`,d:'–',lim:'–',rule:`Class ${cls} n range`,pass:n>=n0&&n<=n1,why:`n = Max/e = ${r4(n)} ${n>=n0&&n<=n1?'is within':'is outside'} the allowed range`});
+ const mk=RULES.minE[cls];rows.push({test:'Instrument',item:'Min ≥ '+mk+'e',obs:min,ref:mk*e,d:'–',lim:'–',rule:'Min capacity rule',pass:min>=mk*e,why:`Min ${min} ${min>=mk*e?'≥':'<'} ${mk}e = ${r4(mk*e)} ${unit}`});
+ const chkE=(v,l)=>{if(Math.abs(v/e-Math.round(v/e))>1e-6)warn.push(`${l}: indication ${v} is not a multiple of e (${e})`)};
+ p.w.forEach((L,k)=>['up','dn'].forEach((d,j)=>{const v=num(o.w[k][j]);const l=`Weighing ${L} ${unit} (${d=='up'?'ascending':'descending'})`;
+  if(v==null)warn.push(l+': missing observation');else{chkE(v,l);if(v<0)warn.push(l+': negative indication');
+  add('Weighing',l,v,L,mpe(cls,e,L),`MPE band ${band(cls,e,L)}`)}}));
+ o.ecc.forEach((x,k)=>{const v=num(x),l=`Eccentricity position ${k+1} @ ${p.ecc} ${unit}`;
+  if(v==null)warn.push(l+': missing observation');else{chkE(v,l);add('Eccentricity',l,v,p.ecc,mpe(cls,e,p.ecc),`MPE at applied load, band ${band(cls,e,p.ecc)}`)}});
+ p.rep.forEach((L,k)=>{const vs=o.rep[k].map(num),l=`Repeatability @ ${L} ${unit}`;
+  if(vs.some(v=>v==null))warn.push(l+': needs 3 readings');else{vs.forEach(v=>chkE(v,l));
+   if(new Set(vs).size===1&&vs[0]!==L&&false)warn.push(l);add('Repeatability',l,Math.max(...vs)-Math.min(...vs),0,mpe(cls,e,L),`Spread ≤ MPE at load, band ${band(cls,e,L)}`,'spread')}});
+ const fail=rows.some(r=>!r.pass);
+ return{rows,warn,verdict:fail?'NON-COMPLIANT':warn.length?'INCOMPLETE':'COMPLIANT'}}
+const bar=x=>typeof x.lim=='number'&&x.lim>0?`<div class="bar"><i class="${x.pass?'':'x'}" style="width:${Math.min(100,Math.abs(x.d)/x.lim*100)}%"></i></div>`:'';
+const tag=(p)=>`<span class="tag ${p?'P':'F'}">${p?'PASS':'FAIL'}</span>`;
+const vtag=v=>`<span class="tag ${v=='COMPLIANT'?'P':v=='INCOMPLETE'?'W':'F'}">${v}</span>`;
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function sha(s){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))|0;return'fallback-'+(h>>>0).toString(16)}}
+// ---- Navigation ----
+const NAV=[['dash','Dashboard'],['inst','Instruments'],['test','Testing'],['rep','Reports'],['repo','Repository'],['ver','Verify'],['aud','Audit trail']];
+function go(v){view=v;render()}
+function render(){$('#nav').innerHTML=NAV.map(([k,n])=>`<button class="${view==k?'on':''}" onclick="go('${k}')">${n}</button>`).join('');
+ $('#app').innerHTML=({dash,inst,test,rep,repo,ver,aud})[view]()}
+$('#role').onchange=e=>{role=e.target.value;log('Switched role to '+role);render()};
+const instSel=()=>`<select onchange="cur=this.value;render()" style="max-width:340px"><option value="">— select instrument —</option>${db.inst.map(i=>`<option value="${i.id}" ${cur==i.id?'selected':''}>${esc(i.id)} · ${esc(i.name)}</option>`).join('')}</select>`;
+const getI=()=>db.inst.find(i=>i.id==cur);
+// ---- Views ----
+function dash(){const st=s=>db.inst.filter(i=>(db.tests[i.id]||{}).status===s).length;
+ return`<div class="hero"><h1>Every PASS and FAIL, with the reason attached.</h1><p>Register an instrument, get its test plan, record observations, calculate against OIML R 76, review, and seal the report.</p><i></i></div>
+<div class="row" style="margin-bottom:14px"><button class="b" onclick="demo()">Try the demo instrument</button><button class="b s" onclick="go('inst')">Register instrument</button></div>
+<div class="card"><h2>The workflow</h2><div class="flow">${['Instrument Registration','Test Planning','Observation Entry / Import','Data Validation','Standards-Based Calculation','Compliance Evaluation','Technical Review','Secure Report','Digital Repository'].map(s=>`<span>${s}</span>`).join('')}</div>
+ <p class="mu">Rule set in use: <b>${RULES.version}</b>. This tool digitizes calculation, evaluation, review and reporting; it does not replace the authorized laboratory or legally certify an instrument. Verify rule values against the current published standards before official use.</p>
+ </div>
+ <div class="g"><div class="card sc"><div class="mu">Instruments</div><div class="stat">${db.inst.length}</div></div><div class="card sc"><div class="mu">Draft</div><div class="stat">${st('Draft')}</div></div><div class="card sc"><div class="mu">Awaiting review</div><div class="stat">${st('Submitted')}</div></div><div class="card sc"><div class="mu">Approved</div><div class="stat">${st('Approved')}</div></div><div class="card sc"><div class="mu">Reports issued</div><div class="stat">${db.reports.length}</div></div></div>`}
+function inst(){return`<div class="card"><h2>Instrument registration</h2><div class="g">
+ <label>Name/description<input id="f_name" placeholder="Platform scale"></label><label>Make / model<input id="f_make"></label><label>Serial no.<input id="f_sn"></label>
+ <label>Accuracy class<select id="f_cls"><option>III</option><option>II</option><option>I</option><option>IIII</option></select></label>
+ <label>Unit<select id="f_unit"><option>g</option><option>kg</option></select></label>
+ <label>Max<input id="f_max" type="number" step="any"></label><label>Min<input id="f_min" type="number" step="any"></label><label>e (verification interval)<input id="f_e" type="number" step="any"></label></div>
+ <p><button class="b" onclick="addInst()">Register &amp; generate test plan</button></p></div>
+ <div class="card"><h2>Registered instruments</h2><div class="tw"><table><tr><th>ID</th><th>Name</th><th>Class</th><th>Max/Min/e</th><th>n</th><th>Status</th><th></th></tr>${db.inst.map(i=>`<tr><td>${i.id}</td><td>${esc(i.name)}<div class="mu">${esc(i.make)} ${esc(i.sn)}</div></td><td>${i.cls}</td><td>${i.max}/${i.min}/${i.e} ${i.unit}</td><td>${i.max/i.e}</td><td>${(db.tests[i.id]||{}).status}</td><td><button class="b s" onclick="cur='${i.id}';go('test')">Open test</button></td></tr>`).join('')||'<tr><td colspan=7 class="mu">None yet.</td></tr>'}</table></div></div>`}
+function addInst(){const g=k=>$('#f_'+k).value.trim(),max=+g('max'),min=+g('min'),e=+g('e');
+ if(!g('name')||!(max>0)||!(e>0)||!(min>=0)||min>=max||e>=max)return alert('Enter a name and valid Max, Min and e (Min < Max, e < Max).');
+ const id='INS-'+String(db.inst.length+1).padStart(3,'0'),i={id,name:g('name'),make:g('make'),sn:g('sn'),cls:g('cls'),unit:g('unit'),max,min,e};
+ db.inst.push(i);db.tests[id]=blank(i);cur=id;log(`Registered ${id} (${i.name}), class ${i.cls}`);go('test')}
+function demo(){const i={id:'INS-'+String(db.inst.length+1).padStart(3,'0'),name:'Electronic platform scale',make:'DemoWeigh DW-15',sn:'DW'+(1000+db.inst.length),cls:'III',unit:'g',max:15000,min:100,e:5};
+ db.inst.push(i);const t=blank(i),p=plan(i);t.obs.w=p.w.map(L=>[String(L),String(L)]);t.obs.ecc=[p.ecc,p.ecc,p.ecc+5,p.ecc,p.ecc].map(String);t.obs.rep=p.rep.map(L=>[L,L,L].map(String));
+ t.obs.w[t.obs.w.length-1][1]=String(p.w[p.w.length-1]+5);db.tests[i.id]=t;cur=i.id;log('Loaded demo instrument '+i.id);go('test')}
+function test(){const i=getI();
+ if(!i)return`<div class="card"><h2>Testing</h2>${instSel()}<p class="mu">Select or register an instrument to see its automatic test plan.</p></div>`;
+ const t=db.tests[i.id],p=plan(i),locked=t.status!=='Draft',d=locked?'disabled':'';
+ const inp=(path,v)=>`<input ${d} type="number" step="any" value="${esc(v)}" oninput="setObs('${path}',this.value)">`;
+ return`<div class="card"><div class="row" style="justify-content:space-between"><h2>Testing – ${esc(i.name)}</h2>${instSel()}</div>
+ <p class="mu">Class ${i.cls} · Max ${i.max} ${i.unit} · Min ${i.min} · e = ${i.e} · n = ${i.max/i.e} · Status: <b>${t.status}</b></p>
+ <div class="row np"><button class="b s" ${d} onclick="document.getElementById('csv').click()">Import CSV</button><input id="csv" type="file" accept=".csv" hidden onchange="impCSV(this)"><button class="b s" onclick="tpl()">Download CSV template</button></div></div>
+ <div class="card"><h3>1 · Weighing test (error = indication − load)</h3><div class="tw"><table><tr><th>Load (${i.unit})</th><th>MPE ±</th><th>Ascending</th><th>Descending</th></tr>${p.w.map((L,k)=>`<tr><td>${L}</td><td>${r4(mpe(i.cls,i.e,L))}</td><td>${inp('w.'+k+'.0',t.obs.w[k][0])}</td><td>${inp('w.'+k+'.1',t.obs.w[k][1])}</td></tr>`).join('')}</table></div>
+ <h3>2 · Eccentricity test (load ${p.ecc} ${i.unit}, MPE ±${r4(mpe(i.cls,i.e,p.ecc))})</h3><div class="g">${t.obs.ecc.map((v,k)=>`<label class="mu">Position ${k+1}${inp('ecc.'+k,v)}</label>`).join('')}</div>
+ <h3>3 · Repeatability test (3 readings each)</h3>${p.rep.map((L,k)=>`<div class="mu">Load ${L} ${i.unit} (spread limit ${r4(mpe(i.cls,i.e,L))})</div><div class="g" style="margin-bottom:8px">${t.obs.rep[k].map((v,j)=>inp('rep.'+k+'.'+j,v)).join('')}</div>`).join('')}</div>
+ <div id="res"></div><div class="card np"><div class="row">
+ <button class="b" ${role!='Technician'&&role!='Administrator'||t.status!='Draft'?'disabled':''} onclick="setStatus('Submitted')">Submit for technical review</button>
+ <button class="b" ${role=='Technician'||t.status!='Submitted'?'disabled':''} onclick="setStatus('Approved')">Approve (Reviewer)</button>
+ <button class="b s" ${role=='Technician'||t.status=='Draft'?'disabled':''} onclick="setStatus('Draft')">Return to draft</button>
+ <button class="b" ${t.status!='Approved'?'disabled':''} onclick="genReport()">Generate secure report</button></div>
+ <p class="mu">Switch the role in the header to act as Technician or Reviewer. Reports can be generated only after approval.</p></div>${setTimeout(upd,0)&&''}`}
+function upd(){const i=getI(),el=$('#res');if(!i||!el)return;const r=evaluate(i,db.tests[i.id]);
+ el.innerHTML=`<div class="card v${r.verdict[0]}"><div class="row" style="justify-content:space-between"><h2>Explainable evaluation</h2>${vtag(r.verdict)}</div><div class="meter"><i style="width:${r.rows.length?Math.round(r.rows.filter(x=>x.pass).length/r.rows.length*100):0}%"></i></div><div class="mu">${r.rows.filter(x=>x.pass).length} of ${r.rows.length} checks passed · ${r.warn.length} validation findings</div>
+ ${r.warn.length?`<h3>Validation findings (${r.warn.length})</h3>${r.warn.slice(0,12).map(w=>`<div><span class="tag W">CHECK</span> ${esc(w)}</div>`).join('')}${r.warn.length>12?`<div class="mu">…and ${r.warn.length-12} more</div>`:''}`:''}
+ <div class="tw"><table><tr><th>Test</th><th>Item</th><th>Observed</th><th>Reference</th><th>Diff</th><th>Limit ±</th><th>Rule</th><th>Result</th></tr>${r.rows.map(x=>`<tr><td>${x.test}</td><td>${esc(x.item)}</td><td>${x.obs}</td><td>${x.ref}</td><td>${x.d}${bar(x)}</td><td>${x.lim}</td><td>${x.rule}<div class="mu">${esc(x.why)}</div></td><td>${tag(x.pass)}</td></tr>`).join('')}</table></div></div>`}
+function setObs(path,v){const i=getI(),t=db.tests[i.id],a=path.split('.');let o=t.obs[a[0]];for(let k=1;k<a.length-1;k++)o=o[a[k]];o[a[a.length-1]]=v;save();upd()}
+function setStatus(s){const i=getI();db.tests[i.id].status=s;if(s=='Approved')db.tests[i.id].reviewer=role;log(`${i.id}: status → ${s}`);render()}
+function tpl(){const i=getI(),p=plan(i);let s='section,load_or_pos,v1,v2,v3\n';p.w.forEach(L=>s+=`weighing,${L},,\n`);for(let k=1;k<=5;k++)s+=`ecc,${k},\n`;p.rep.forEach(L=>s+=`rep,${L},,,\n`);
+ const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(s);a.download='nawi_template.csv';a.click()}
+function impCSV(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const i=getI(),t=db.tests[i.id],p=plan(i);let n=0,bad=0;
+ r.result.split(/\r?\n/).slice(1).forEach(l=>{const c=l.split(',').map(x=>x.trim());if(!c[0])return;
+  if(c[0]=='weighing'){const k=p.w.indexOf(+c[1]);if(k<0)return bad++;t.obs.w[k]=[c[2]||'',c[3]||''];n++}
+  else if(c[0]=='ecc'){const k=+c[1]-1;if(!(k>=0&&k<5))return bad++;t.obs.ecc[k]=c[2]||'';n++}
+  else if(c[0]=='rep'){const k=p.rep.indexOf(+c[1]);if(k<0)return bad++;t.obs.rep[k]=[c[2]||'',c[3]||'',c[4]||''];n++}else bad++});
+ log(`${i.id}: imported CSV (${n} rows, ${bad} unmatched)`);alert(`Imported ${n} rows; ${bad} rows did not match the test plan.`);render()};r.readAsText(f)}
+async function genReport(){const i=getI(),t=db.tests[i.id],r=evaluate(i,t);
+ if(r.verdict=='INCOMPLETE'&&!confirm('Validation findings remain. Issue the report anyway?'))return;
+ const id=`NAWI-${new Date().getFullYear()}-${String(db.reports.length+1).padStart(4,'0')}`,time=new Date().toISOString();
+ const payload={id,time,rules:RULES.version,instrument:i,obs:t.obs,rows:r.rows,warnings:r.warn,verdict:r.verdict,reviewer:t.reviewer||'',issuedBy:role};
+ const json=JSON.stringify(payload),hash=await sha(json);db.reports.unshift({id,iid:i.id,time,hash,json,verdict:r.verdict});
+ log(`Issued report ${id} for ${i.id} (${r.verdict}) hash ${hash.slice(0,12)}…`);lastRep=id;go('rep')}
+function repHTML(R){const p=JSON.parse(R.json),i=p.instrument;
+ return`<div class="card"><div class="row" style="justify-content:space-between"><h2>Test report ${p.id}</h2>${vtag(p.verdict)}</div>
+ <p class="mu">Issued ${new Date(p.time).toLocaleString()} · ${p.rules} · Reviewer: ${esc(p.reviewer||'–')} · Issued by: ${esc(p.issuedBy)}</p>
+ <table><tr><th>Instrument</th><td>${esc(i.name)} (${esc(i.make)}, S/N ${esc(i.sn)})</td><th>Class</th><td>${i.cls}</td></tr><tr><th>Max / Min / e</th><td>${i.max} / ${i.min} / ${i.e} ${i.unit}</td><th>n</th><td>${i.max/i.e}</td></tr></table>
+ <div class="tw"><table><tr><th>Test</th><th>Item</th><th>Observed</th><th>Ref</th><th>Diff</th><th>Limit ±</th><th>Applicable rule</th><th>Result</th></tr>${p.rows.map(x=>`<tr><td>${x.test}</td><td>${esc(x.item)}</td><td>${x.obs}</td><td>${x.ref}</td><td>${x.d}</td><td>${x.lim}</td><td>${x.rule}</td><td>${tag(x.pass)}</td></tr>`).join('')}</table></div>
+ ${p.warnings.length?`<h3>Open validation findings</h3>${p.warnings.map(w=>`<div>• ${esc(w)}</div>`).join('')}`:''}
+ <h3>Integrity</h3><div class="mu">SHA-256 of report data:</div><code>${R.hash}</code>
+ <p class="mu">Verify authenticity in the Verify tab using the report ID and hash. Physical testing remains the responsibility of authorized personnel; this report is not a legal certificate.</p>
+ <div class="np row"><button class="b" onclick="window.print()">Print / Save as PDF</button><button class="b s" onclick="dl('${R.id}')">Download JSON</button></div></div>`}
+function rep(){const R=db.reports.find(r=>r.id==lastRep)||db.reports[0];return R?repHTML(R):`<div class="card"><h2>Reports</h2><p class="mu">No reports yet. Approve a test and generate a secure report from the Testing tab.</p></div>`}
+function dl(id){const R=db.reports.find(r=>r.id==id),a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify({hash:R.hash,report:JSON.parse(R.json)},null,1));a.download=id+'.json';a.click()}
+function repo(){return`<div class="card"><h2>Digital repository</h2><input id="q" placeholder="Search by instrument, serial, report ID…" oninput="fq()"><div class="tw" id="rl"></div></div>${setTimeout(fq,0)&&''}`}
+function fq(){const q=($('#q')||{value:''}).value.toLowerCase(),el=$('#rl');if(!el)return;
+ const rows=db.reports.filter(r=>(r.id+r.json).toLowerCase().includes(q));
+ el.innerHTML=`<table><tr><th>Report</th><th>Instrument</th><th>Date</th><th>Verdict</th><th></th></tr>${rows.map(r=>{const i=JSON.parse(r.json).instrument;return`<tr><td>${r.id}</td><td>${esc(i.name)} · ${esc(i.sn)}</td><td>${new Date(r.time).toLocaleDateString()}</td><td>${vtag(r.verdict)}</td><td><button class="b s" onclick="lastRep='${r.id}';go('rep')">Open</button></td></tr>`}).join('')||'<tr><td colspan=5 class="mu">No reports found.</td></tr>'}</table>`}
+function ver(){return`<div class="card"><h2>Verify report integrity</h2><div class="g"><label>Report ID<input id="v_id" placeholder="NAWI-2026-0001"></label><label>SHA-256 hash<input id="v_h"></label></div><p><button class="b" onclick="doVer()">Verify</button></p><div id="v_out"></div></div>`}
+async function doVer(){const id=$('#v_id').value.trim(),h=$('#v_h').value.trim().toLowerCase(),R=db.reports.find(r=>r.id==id),o=$('#v_out');
+ if(!R)return o.innerHTML='<span class="tag F">NOT FOUND</span> No report with this ID in this repository.';
+ const re=await sha(R.json);o.innerHTML=re!==R.hash?'<span class="tag F">TAMPERED</span> Stored report data no longer matches its recorded hash.':h===R.hash?'<span class="tag P">VERIFIED</span> Hash matches and stored data is intact.':'<span class="tag F">MISMATCH</span> The hash you entered does not match this report.'}
+function aud(){return`<div class="card"><h2>Audit trail</h2><div class="tw"><table><tr><th>Time</th><th>User role</th><th>Action</th></tr>${db.audit.map(a=>`<tr><td>${a.t}</td><td>${a.u}</td><td>${esc(a.a)}</td></tr>`).join('')||'<tr><td colspan=3 class="mu">No activity yet.</td></tr>'}</table></div></div>`}
+render();
+</script><script>
+// ===== Daily-use add-ons: settings, edit/delete, test details, QR, backup =====
+db.settings=db.settings||{lab:'',acc:'',addr:'',lastBackup:''};NAV.push(['set','Settings']);
+const today=()=>new Date().toISOString().slice(0,10);
+function dlf(n,t,m){const a=document.createElement('a');a.href='data:'+(m||'text/plain')+';charset=utf-8,'+encodeURIComponent(t);a.download=n;a.click()}
+const csvq=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+render=function(){$('#nav').innerHTML=NAV.map(([k,n])=>`<button class="${view==k?'on':''}" onclick="go('${k}')">${n}</button>`).join('');
+ $('#app').innerHTML=({dash,inst,test,rep,repo,ver,aud,set:settings})[view]();drawQR()};
+function drawQR(){const el=$('#qr');if(!el||el.firstChild)return;try{new QRCode(el,{text:el.dataset.t,width:96,height:96})}catch(e){el.textContent='QR unavailable'}}
+// --- Instruments: register / edit / delete ---
+let editId=null;
+inst=function(){const x=db.inst.find(i=>i.id==editId)||{},v=k=>esc(x[k]??''),opt=(a,k)=>a.map(c=>`<option ${x[k]==c?'selected':''}>${c}</option>`).join('');
+ return`<div class="card"><h2>${editId?'Edit instrument '+editId:'Instrument registration'}</h2><div class="g">
+ <label>Name/description<input id="f_name" value="${v('name')}" placeholder="Platform scale"></label><label>Make / model<input id="f_make" value="${v('make')}"></label><label>Serial no.<input id="f_sn" value="${v('sn')}"></label>
+ <label>Accuracy class<select id="f_cls">${opt(['III','II','I','IIII'],'cls')}</select></label><label>Unit<select id="f_unit">${opt(['g','kg'],'unit')}</select></label>
+ <label>Max<input id="f_max" type="number" step="any" value="${v('max')}"></label><label>Min<input id="f_min" type="number" step="any" value="${v('min')}"></label><label>e (verification interval)<input id="f_e" type="number" step="any" value="${v('e')}"></label></div>
+ <p class="row"><button class="b" onclick="addInst()">${editId?'Save changes':'Register & generate test plan'}</button>${editId?'<button class="b s" onclick="editId=null;render()">Cancel</button>':''}</p></div>
+ <div class="card"><h2>Registered instruments (${db.inst.length})</h2><div class="tw"><table><tr><th>ID</th><th>Instrument</th><th>Class</th><th>Max/Min/e</th><th>n</th><th>Status</th><th></th></tr>${db.inst.map(i=>`<tr><td>${i.id}</td><td>${esc(i.name)}<div class="mu">${esc(i.make)} ${esc(i.sn)}</div></td><td>${i.cls}</td><td>${i.max}/${i.min}/${i.e} ${i.unit}</td><td>${r4(i.max/i.e)}</td><td>${(db.tests[i.id]||{}).status}</td><td class="row"><button class="b s" onclick="cur='${i.id}';go('test')">Open test</button><button class="b s" onclick="editId='${i.id}';render();scrollTo(0,0)">Edit</button><button class="b s" onclick="delInst('${i.id}')">Delete</button></td></tr>`).join('')||'<tr><td colspan=7 class="mu">No instruments yet. Fill the form above or load the demo from the Dashboard.</td></tr>'}</table></div></div>`};
+addInst=function(){const g=k=>$('#f_'+k).value.trim(),max=+g('max'),min=+g('min'),e=+g('e');
+ if(!g('name')||!(max>0)||!(e>0)||!(min>=0)||min>=max||e>=max)return alert('Enter a name and valid Max, Min and e (Min < Max, e < Max).');
+ const f={name:g('name'),make:g('make'),sn:g('sn'),cls:g('cls'),unit:g('unit'),max,min,e};
+ if(editId){const i=db.inst.find(x=>x.id==editId),ch=['cls','max','min','e','unit'].some(k=>i[k]!==f[k]);
+  if(ch&&(db.tests[i.id]||{}).status!=='Draft'&&!confirm('Changing class, Max, Min, e or unit resets this instrument’s test. Continue?'))return;
+  Object.assign(i,f);if(ch)db.tests[i.id]=blank(i);log(`Edited ${i.id}`);cur=i.id;editId=null;return go('inst')}
+ const id='INS-'+String(Math.max(0,...db.inst.map(i=>+i.id.slice(4)))+1).padStart(3,'0'),i={id,...f};
+ db.inst.push(i);db.tests[id]=blank(i);cur=id;log(`Registered ${id} (${i.name}), class ${i.cls}`);go('test')};
+function delInst(id){if(role!=='Administrator')return alert('Only an Administrator can delete instruments. Switch role in the header.');
+ if(!confirm(`Delete ${id} and its current test data? Issued reports are kept in the repository.`))return;
+ db.inst=db.inst.filter(i=>i.id!=id);delete db.tests[id];if(cur==id)cur=null;log('Deleted '+id);render()}
+// --- Testing: details, tools, workflow ---
+const MK=[['tester','Tested by'],['date','Test date'],['loc','Location'],['temp','Temperature (°C)'],['hum','Humidity (%RH)'],['ref','Reference masses ID'],['cert','Calibration certificate no.'],['due','Calibration due']];
+function setMeta(k,v){const t=db.tests[cur];t.meta=t.meta||{};t.meta[k]=v;save()}
+const _test=test;
+test=function(){const h=_test(),i=getI();if(!i)return h;const t=db.tests[i.id],m=t.meta||{},lk=t.status!='Draft'?'disabled':'';
+ const mc=`<div class="card"><h3>Test details &amp; traceability</h3><div class="g">${MK.map(([k,l])=>`<label class="mu">${l}<input ${lk} type="${k=='date'||k=='due'?'date':k=='temp'||k=='hum'?'number':'text'}" value="${esc(m[k]??(k=='date'?today():''))}" oninput="setMeta('${k}',this.value)"></label>`).join('')}</div></div>`;
+ const tools=`<div class="row" style="margin-top:10px"><button class="b s" onclick="expRes()">Export results CSV</button><button class="b s" ${t.status!='Draft'?'disabled':''} onclick="clearObs()">Clear observations</button><button class="b s" onclick="newCycle()">Start new test cycle</button></div>`;
+ return h.replace('<div id="res"></div>',mc+'<div id="res"></div>').replace('<p class="mu">Switch the role',tools+'<p class="mu">Switch the role')};
+function expRes(){const i=getI(),r=evaluate(i,db.tests[i.id]);dlf(i.id+'_results.csv',['Test,Item,Observed,Reference,Diff,Limit,Rule,Result',...r.rows.map(x=>[x.test,x.item,x.obs,x.ref,x.d,x.lim,x.rule,x.pass?'PASS':'FAIL'].map(csvq).join(',')),'',csvq('Verdict: '+r.verdict)].join('\n'),'text/csv')}
+function clearObs(){const i=getI();if(!confirm('Clear all entered observations for this test?'))return;db.tests[i.id].obs=blank(i).obs;log(i.id+': observations cleared');render()}
+function newCycle(){const i=getI(),o=db.tests[i.id];if(!confirm('Start a fresh test cycle? Current observations are cleared; issued reports stay in the repository.'))return;
+ const n=blank(i),m={...(o.meta||{})};delete m.date;n.meta=m;db.tests[i.id]=n;log(i.id+': new test cycle started');render()}
+setStatus=function(s){const i=getI(),t=db.tests[i.id];
+ if(s=='Submitted'&&!(t.meta&&t.meta.tester&&t.meta.tester.trim()))return alert('Enter “Tested by” in Test details before submitting.');
+ if(s=='Approved'){const n=prompt('Reviewer name for the record:');if(!n)return;t.reviewer=role;t.reviewerName=n.trim()}
+ t.status=s;log(`${i.id}: status → ${s}`);render()};
+genReport=async function(){const i=getI(),t=db.tests[i.id],r=evaluate(i,t);
+ if(r.verdict=='INCOMPLETE'&&!confirm('Validation findings remain. Issue the report anyway?'))return;
+ const id=`NAWI-${new Date().getFullYear()}-${String(db.reports.length+1).padStart(4,'0')}`,time=new Date().toISOString(),meta={date:today(),...(t.meta||{})};
+ const payload={id,time,rules:RULES.version,lab:{...db.settings,lastBackup:undefined},instrument:i,meta,obs:t.obs,rows:r.rows,warnings:r.warn,verdict:r.verdict,reviewer:t.reviewer||'',reviewerName:t.reviewerName||'',issuedBy:role};
+ const json=JSON.stringify(payload),hash=await sha(json);db.reports.unshift({id,iid:i.id,time,hash,json,verdict:r.verdict});
+ log(`Issued report ${id} for ${i.id} (${r.verdict}) hash ${hash.slice(0,12)}…`);lastRep=id;go('rep')};
+// --- Report: letterhead, details, signatures, QR ---
+const _rh=repHTML;
+repHTML=function(R){const p=JSON.parse(R.json),m=p.meta||{},L=p.lab||{};let h=_rh(R);
+ h=h.replace('<div class="card">','<div class="card"><div style="border-bottom:2px solid var(--tx);padding-bottom:8px;margin-bottom:10px"><b style="font-size:18px">'+esc(L.lab||'Testing laboratory')+'</b><div class="mu">'+esc([L.acc,L.addr].filter(Boolean).join(' · '))+'</div></div>');
+ h=h.replace('<div class="tw"><table><tr><th>Test</th>',`<table><tr><th>Tested by</th><td>${esc(m.tester)}</td><th>Date</th><td>${esc(m.date)}</td></tr><tr><th>Ambient</th><td>${esc(m.temp)} °C · ${esc(m.hum)} %RH</td><th>Location</th><td>${esc(m.loc)}</td></tr><tr><th>Reference masses</th><td>${esc(m.ref)}</td><th>Cert. / due</th><td>${esc(m.cert)} ${esc(m.due)}</td></tr></table><div class="tw"><table><tr><th>Test</th>`);
+ h=h.replace('<h3>Integrity</h3>',`<div style="display:flex;justify-content:space-around;gap:20px;margin:26px 0 8px"><div style="flex:1;border-top:1px solid var(--tx);padding-top:4px">Tested by: ${esc(m.tester)}</div><div style="flex:1;border-top:1px solid var(--tx);padding-top:4px">Reviewed by: ${esc(p.reviewerName)}</div></div><h3>Integrity</h3><div id="qr" data-t="WEIGHCERT|${R.id}|${R.hash}" style="float:right;background:#fff;padding:6px"></div>`);
+ return h};
+// --- Repository export ---
+const _repo=repo;repo=function(){return _repo().replace('<input id="q"','<div class="row" style="margin-bottom:8px"><button class="b s" onclick="expRepo()">Export list (CSV)</button></div><input id="q"')};
+function expRepo(){dlf('weighcert_reports.csv',['Report,Instrument,Serial,Date,Verdict,SHA-256',...db.reports.map(r=>{const i=JSON.parse(r.json).instrument;return[r.id,i.name,i.sn,r.time.slice(0,10),r.verdict,r.hash].map(csvq).join(',')})].join('\n'),'text/csv')}
+// --- Dashboard: what needs attention ---
+const _dash=dash;
+dash=function(){const rv=db.inst.filter(i=>(db.tests[i.id]||{}).status=='Submitted'),dr=db.inst.filter(i=>(db.tests[i.id]||{}).status=='Draft'),bk=db.settings.lastBackup;
+ const li=(a,l)=>a.map(i=>`<div class="row" style="justify-content:space-between;border-bottom:1px solid var(--bd);padding:6px 0"><span>${esc(i.id)} · ${esc(i.name)} <span class="mu">${l}</span></span><button class="b s" onclick="cur='${i.id}';go('test')">Open</button></div>`).join('');
+ return _dash()+`<div class="card"><h2>Needs attention</h2>${rv.length?`<h3>Awaiting technical review</h3>${li(rv,'')}`:''}${dr.length?`<h3>Drafts in progress</h3>${li(dr,'')}`:''}${!rv.length&&!dr.length?'<p class="mu">Nothing pending. Register an instrument to start a new test.</p>':''}
+ <h3>Recent reports</h3>${db.reports.slice(0,5).map(r=>`<div class="row" style="justify-content:space-between;border-bottom:1px solid var(--bd);padding:6px 0"><span>${r.id} ${vtag(r.verdict)}</span><button class="b s" onclick="lastRep='${r.id}';go('rep')">Open</button></div>`).join('')||'<p class="mu">No reports issued yet.</p>'}
+ <p class="mu" style="margin-top:12px">${bk?'Last backup: '+esc(bk):'No backup taken yet — your data lives in this browser only.'} <a href="#" onclick="go('set');return false">Back up now</a></p></div>`};
+// --- Settings, backup & restore ---
+function settings(){const s=db.settings;
+ return`<div class="card"><h2>Laboratory details</h2><p class="mu">Shown as the letterhead on every report.</p><div class="g"><label>Laboratory name<input value="${esc(s.lab)}" oninput="db.settings.lab=this.value;save()"></label><label>Approval / accreditation no.<input value="${esc(s.acc)}" oninput="db.settings.acc=this.value;save()"></label><label>Address<input value="${esc(s.addr)}" oninput="db.settings.addr=this.value;save()"></label></div></div>
+ <div class="card"><h2>Backup &amp; restore</h2><p class="mu">Data is stored in this browser. Download a backup regularly, and use it to move to another device.</p>
+ <div class="row"><button class="b" onclick="expDB()">Download backup (JSON)</button><button class="b s" onclick="document.getElementById('rst').click()">Restore from backup</button><input id="rst" type="file" accept=".json" hidden onchange="impDB(this)"><button class="b s" onclick="resetAll()">Erase all data</button></div></div>
+ <div class="card"><h2>Rule set</h2><p class="mu">${RULES.version}. Class limits for permissible errors, allowed n ranges and Min rules are defined in one <code>RULES</code> object in the page source — check them against the current standard before official use.</p></div>`}
+function expDB(){db.settings.lastBackup=new Date().toLocaleString();save();dlf('weighcert_backup_'+today()+'.json',JSON.stringify(db),'application/json');log('Backup downloaded');render()}
+function impDB(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.inst)||!Array.isArray(d.reports)||!d.tests)throw 0;
+ if(!confirm(`Replace current data with this backup (${d.inst.length} instruments, ${d.reports.length} reports)?`))return;db=d;db.settings=db.settings||{lab:'',acc:'',addr:''};db.audit=db.audit||[];save();log('Backup restored');cur=null;render()}catch(e){alert('That file is not a valid WeighCert backup.')}};r.readAsText(f)}
+function resetAll(){if(role!=='Administrator')return alert('Switch role to Administrator to erase data.');if(!confirm('Erase ALL instruments, tests, reports and audit history? This cannot be undone.')||prompt('Type ERASE to confirm')!=='ERASE')return;db={inst:[],tests:{},audit:[],reports:[],settings:{lab:'',acc:'',addr:''}};save();cur=null;lastRep=null;render()}
+render();
+</script><script>
+// ===== Repository upload & attachments =====
+db.files=db.files||[];
+document.head.insertAdjacentHTML('beforeend','<style>@media(max-width:640px){nav{flex-wrap:wrap!important;overflow:visible!important}}</style>');
+const _repo2=repo;
+repo=function(){const opts=db.inst.map(i=>`<option value="${i.id}">${esc(i.id)} · ${esc(i.name)}</option>`).join('');
+ const kb=n=>n>1048576?(n/1048576).toFixed(1)+' MB':Math.ceil(n/1024)+' KB';
+ return`<div class="card"><h2>Upload to repository</h2><p class="mu">Upload a report exported from WeighCert (.json) to add it back with its integrity checked, or attach supporting files (PDF, image, CSV, Excel, Word; up to 1.5 MB) to an instrument.</p>
+ <div class="g"><label>Instrument (for attachments)<select id="up_i"><option value="">— none —</option>${opts}</select></label><label>File<input id="up_f" type="file" accept=".json,.pdf,.png,.jpg,.jpeg,.csv,.xlsx,.docx"></label></div><p><button class="b" onclick="upFile()">Upload</button></p></div>`
+ +_repo2()+`<div class="card"><h2>Attachments (${db.files.length})</h2><div class="tw"><table><tr><th>File</th><th>Instrument</th><th>Size</th><th>Added</th><th></th></tr>${db.files.map(f=>`<tr><td>${esc(f.name)}</td><td>${esc(f.iid||'–')}</td><td>${kb(f.size)}</td><td>${f.time.slice(0,10)}</td><td class="row"><button class="b s" onclick="dlAtt('${f.id}')">Download</button><button class="b s" onclick="delAtt('${f.id}')">Delete</button></td></tr>`).join('')||'<tr><td colspan=5 class="mu">No attachments yet.</td></tr>'}</table></div></div>`};
+function upFile(){const f=$('#up_f').files[0];if(!f)return alert('Choose a file first.');const iid=$('#up_i').value;
+ if(/\.json$/i.test(f.name)){const r=new FileReader();r.onload=async()=>{let d;try{d=JSON.parse(r.result)}catch(e){return alert('This is not valid JSON.')}
+  if(Array.isArray(d.inst))return alert('This is a full backup. Restore it from Settings → Backup & restore.');
+  if(!d.report||!d.hash||!d.report.id)return alert('Not a WeighCert report file. Use “Download JSON” on a report.');
+  const json=JSON.stringify(d.report);if(await sha(json)!==d.hash)return alert('Rejected: the report content does not match its hash, so it may have been altered.');
+  if(db.reports.some(x=>x.id==d.report.id))return alert('A report with ID '+d.report.id+' is already in the repository.');
+  db.reports.unshift({id:d.report.id,iid:(d.report.instrument||{}).id||'',time:d.report.time,hash:d.hash,json,verdict:d.report.verdict});
+  db.reports.sort((a,b)=>b.time.localeCompare(a.time));log('Uploaded report '+d.report.id);lastRep=d.report.id;alert('Report '+d.report.id+' added and verified.');go('repo')};r.readAsText(f);return}
+ if(f.size>1572864)return alert('File is larger than 1.5 MB. Please compress it or keep it outside the app.');
+ const r=new FileReader();r.onload=()=>{const rec={id:'F'+Date.now(),iid,name:f.name,size:f.size,time:new Date().toISOString(),data:r.result};db.files.unshift(rec);
+  try{localStorage.setItem('wc4',JSON.stringify(db))}catch(e){db.files.shift();return alert('Browser storage is full. Delete some attachments or download a backup first.')}
+  log(`Attached ${f.name}${iid?' to '+iid:''}`);go('repo')};r.readAsDataURL(f)}
+function dlAtt(id){const f=db.files.find(x=>x.id==id),a=document.createElement('a');a.href=f.data;a.download=f.name;a.click()}
+function delAtt(id){if(!confirm('Delete this attachment?'))return;db.files=db.files.filter(x=>x.id!=id);log('Deleted attachment '+id);go('repo')}
+const _dash2=dash;
+dash=function(){return`<div class="row" style="margin-bottom:12px"><button class="b" onclick="go('repo')">Open repository</button><button class="b s" onclick="go('repo')">Upload a report / file</button></div>`+_dash2()};
+render();
+</script></body></html>
